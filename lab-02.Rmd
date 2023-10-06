@@ -83,20 +83,31 @@ plastic_data_all %>% head(n = 10)
 
 ```{r Ex1, message = FALSE}
 # Write your code here to answer exercise 1
-
+plastic_data_all %>%
+  count(region, sort = TRUE)
 
 
 ```
-
+#Africa has the most terrotories
 
 
 ### Ex 2.
 
 ```{r Ex2, message = FALSE}
 # Write your code here to answer exercise 2
+plastic_data_all <- plastic_data_all %>% 
+  mutate(total_mismanaged_plastic = mismanaged_plastic * population)
+plastic_data_all %>%  
+  group_by(region) %>%
+  summarise(avg_plastic = mean(total_mismanaged_plastic))
 
+plastic_data_all %>%  
+  group_by(region) %>%
+  summarise(max_plastic = max(total_mismanaged_plastic))
 
-
+plastic_data_all %>%  
+  group_by(region) %>%
+  summarise(min_plastic = min(total_mismanaged_plastic))
 ```
 
 
@@ -104,7 +115,11 @@ plastic_data_all %>% head(n = 10)
 
 ```{r Ex3, message = FALSE}
 # Write your code here to answer exercise 3
-
+plastic_data_all %>%
+  mutate(pct_mismanaged_plastic_ocean =  (mismanaged_plastic_ocean/mismanaged_plastic)*100) %>%
+   
+group_by(region)%>%
+  summarise(median_oceanwaste = median(pct_mismanaged_plastic_ocean, na.rm = TRUE))
 
 
 ```
