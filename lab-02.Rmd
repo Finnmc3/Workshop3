@@ -119,11 +119,11 @@ plastic_data_all %>%
   mutate(pct_mismanaged_plastic_ocean =  (mismanaged_plastic_ocean/mismanaged_plastic)*100) %>%
    
 group_by(region)%>%
-  summarise(median_oceanwaste = median(pct_mismanaged_plastic_ocean, na.rm = TRUE))
+  summarise(median_oceanwaste = median(pct_mismanaged_plastic_ocean))
 
 
 ```
-
+#na present in Africa data
 
 ### Ex 4.
 
